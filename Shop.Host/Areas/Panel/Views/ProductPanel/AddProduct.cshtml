@@ -1,0 +1,27 @@
+﻿@model ProductPanelInsertDTO
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+<h2>اضافه کردن محصول</h2>
+<br>
+<form action="/Panel/ProductPanel/Insert" method="post" enctype="multipart/form-data" class="col-12">
+    <div class="form-group">
+
+        <label asp-for="Name">نام محصول</label>
+        <input asp-for="Name" type="text" class="form-control" placeholder="سیب">
+        <span asp-validation-for="Name"></span>
+
+        <label asp-for="Price">قیمت</label>
+        <input asp-for="Price" type="number" class="form-control" placeholder="2000000">
+        <span asp-validation-for="Price"></span>
+
+        <label asp-for="Quantity">تعداد</label>
+        <input asp-for="Quantity" type="number" class="form-control" placeholder="20">
+        <span asp-validation-for="Quantity"></span>
+
+        <label asp-for="Img">تصویر محصول</label>
+        <input type="file" class="form-control" name="Img" id="FileUpload">
+    </div>
+        <button type="submit" class="btn btn-success">ذخیره</button>
+    </form>

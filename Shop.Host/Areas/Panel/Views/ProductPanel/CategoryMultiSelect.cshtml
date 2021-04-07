@@ -1,0 +1,14 @@
+﻿@model Shop.Host.DTOs.Categories.CategoryMultiSelectDTO
+<br>
+<div class="form-group border">
+    @{
+        foreach (var category in Model.Categories)
+        {
+            <div class="checkbox">
+                    <label><input type="checkbox" name="CategoryIds" value="@category.Value" 
+                                  @((Model.CategoryIds.Any(x=>x==category.Value)?"checked":""))> @category.Key</label>
+            </div>
+        }
+    }
+
+</div>

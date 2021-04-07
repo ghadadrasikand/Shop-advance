@@ -1,0 +1,64 @@
+﻿@model Shop.Host.DTOs.Products.GridResultDTO
+@{
+    ViewData["Title"] = "ProductList";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>لیست محصولات</h2>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">تصویر محصول</th>
+            <th scope="col">نام محصول</th>
+            <th scope="col">قیمت</th>
+            <th scope="col">تعداد</th>
+            <th scope="col">عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Product)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td><img src="@item.ImagePath" width="100px" height="100px" /></td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>
+                    <a asp-area="Panel" asp-controller="ProductPanel" asp-action="UpdateProduct" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                    @*<button  onclick="GoUpdate(@item.Id)">Edit</button>*@
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination centerElement">
+            @{
+                int take = 3;
+                int page = Model.Count < take ? 1 : (int)Math.Ceiling((decimal)Model.Count / take);
+                for (int i = 1; i <= page; i++)
+                {
+
+                    <li class="page-item"><button class="page-link" onclick="ChangePage(@i,@take);">@i</button></li>
+                }
+            }
+
+        </ul>
+    </nav>
+</div>
+<script>
+    function ChangePage(skip, take) {
+        skip = (skip - 1) * take
+        window.location = `/Panel/ProductPanel/ProductList/${skip}/${take}`
+    }
+
+    //function GoUpdate(id) {
+       
+    //    window.location = `/Panel/ProductPanel/UpdateProduct/${id}`
+    //}
+</script>

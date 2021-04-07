@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout</title>
+    <link href="~/Css/style.css" rel="stylesheet" />
+    <link href="~/Css/bootstrap-rtl.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper align-items-stretch">
+        <div class="row">
+            <div class="col-4" id="sidebar">
+
+                <h1><a href="index.html" class="logo">Project Name</a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        @*<a asp-controller="Product"  asp-area="panel"><span class="fa fa-home mr-3"></span> Homepage</a>*@
+                    </li>
+                    <li>
+                        <a href="/Panel/ProductPanel/ProductList/0/3"><span class="fa fa-user mr-3"></span> لیست محصولات</a>
+                    </li>
+                    <li>
+                        <a href="/Panel/ProductPanel/AddProduct"><span class="fa fa-user mr-3"></span>افزودن محصول</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Subcription</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Settings</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Information</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-8">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
